@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\Shop\Catalog\Products;
 
 use App\Http\Resources\Shop\Catalog\Products\ProductResource;
 use App\Models\Shop\Catalog\Products\Product;
+use Illuminate\Http\Request;
 
 class ProductController
 {
@@ -38,15 +39,15 @@ class ProductController
 
     public function get(int $id)
     {
-        if ($row = Product::find($id)) {
-            $row = new ShopProductResource($row);
+        if ($product = Product::find($id)) {
+            $product = new ProductResource($product);
 
             return [
                 'status' => 200,
                 'ok' => true,
                 'data' => [
                     'Producto encontrado',
-                    'product'    => $row,
+                    'product' => $product,
                 ]
             ];
         }
@@ -58,5 +59,35 @@ class ProductController
                 'message' => 'No se encuentra el registro, ID: ' . $id,
             ],
         ];
+    }
+
+    public function store(Request $request)
+    {
+        $arrData = $request->validate([
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        if ($product = Product::create($arrData)) {
+            return [
+                'status' => 201,
+                'ok' => true,
+                'data' => [
+                    'message' => 'Producto creado',
+                    'product'    => $product,
+                ],
+            ];
+        }
+        return 418;
+    }
+
+    public function destroy(int $id)
+    {
+        if (($product = Product::find($id))
+            && $product->delete()) {
+            return 204;
+        }
+        return 418;
     }
 }

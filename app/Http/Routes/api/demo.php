@@ -31,5 +31,8 @@ Route::namespace('api')
 
         Route::post('products', 'ProductController@store')
             ->name('api.products.store');
+
+        Route::destroy('products/{id}', 'ProductController@destroy')
+            ->name('api.products.destroy');
     });
 });
