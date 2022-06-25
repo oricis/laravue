@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', 'web\Shop\Catalog\Products\ProductsController@index')->name('welcome');
 
 Route::namespace('web\Shop\Catalog')
     ->prefix('shop/catalog')
@@ -25,5 +24,11 @@ Route::namespace('web\Shop\Catalog')
 
         Route::get('products', 'ProductsController@index')
             ->name('web.products.index');
+        Route::get('products/create', 'ProductsController@create')
+            ->name('web.products.create');
+        Route::post('products/store', 'ProductsController@store')
+            ->name('web.products.store');
+        Route::delete('products/destroy', 'ProductsController@destroy')
+            ->name('web.products.destroy');
     });
 });

@@ -4,6 +4,10 @@
 </template>
 
 <script>
+    // require('../../../../public/js/vendor/ironwoods/traces.js');
+    // require('../../../../public/js/common.js');
+    // require('../../../../public/js/app.js');
+
     import HelloWorld from './components/HelloWorld.vue'
 
     export default {
@@ -15,34 +19,8 @@
 </script>
 
 <style>
-    body {
-        --main_color: #42b983
-    }
-
-    .pad-2 {
-        padding: 2%;
-    }
-    .top-5 {
-        margin-top: 5%;
-    }
     .bordered {
         border: 1px solid var(--main_color)
-    }
-    .rounded {
-        border-radius: 3px;
-    }
-    .w-50 {
-        width: 50%;
-    }
-    .w-60 {
-        width: 60%;
-    }
-    .w-70 {
-        width: 70%;
-    }
-    .centered {
-        margin-left: auto;
-        margin-right: auto;
     }
 
     #app {

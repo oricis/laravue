@@ -14,9 +14,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+        <link href="{{ asset('css/vendor/ironwoods/buttons-bootstrap-based.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
         <script defer src="{{ asset('js/vendor/ironwoods/traces.js') }}"></script>
+        <script defer src="{{ asset('js/common.js') }}"></script>
+        <script defer src="{{ asset('js/app.js') }}"></script>
 
         @stack('scripts')
         @auth
@@ -35,22 +38,17 @@
             <h1>Laravue Demo</h1>
         </header>
 
+        <nav class="sidebar"></nav>
         <main>
-            <div class="sidebar-container">
-                @include('layouts.parts.nav')
-            </div>
-
-            <article>
-                <div id="page-content"
-                    @stack('page-content-attrs')
-                    data-route="{{ $route }}">
-                    @yield('content')
-                </div>
+            <article id="page-content"
+                @stack('page-content-attrs')
+                data-route="{{ $route ?? '' }}">
+                @yield('content')
             </article>
         </main>
 
         <footer>
-            Moisés Alcocer {{ date('Y') }}
+            Moisés Alcocer, {{ date('Y') }}
         </footer>
     </body>
 </html>

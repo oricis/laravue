@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    --border-color: grey;
+    --main_color: #42b983
+}
+
+.a {
+    cursor: pointer;
+}
+.a:hover {
+    text-decoration: underline;
+}
+
+.b {
+    font-weight: bolder;
+}
+
+.block {
+    display: block;
+}
+
+.bordered {
+    border: 1px solid var(--border-color);
+}
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cbrown-hover:hover {
+  color: brown;
+}
+
+.cred {
+  color: red;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-both {
+    justify-content: space-between;
+}
+
+.margin-b-2 {
+  margin-bottom: 2%;
+}
+
+.none {
+    display: none;
+}
+
+.pad-2 {
+    padding: 2%;
+}
+.pad-b-2 {
+    padding-bottom: 2%;
+}
+.pad-both-2 {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.pad-both-5 {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.right-content {
+    text-align: right;
+}
+
+.rounded {
+    border-radius: 3px
+}
+
+.top-2 {
+  margin-top: 2%;
+}
+
+.top-5 {
+    margin-top: 5%;
+}
+
+.top-10 {
+    margin-top: 10%
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-70 {
+    width: 70%;
+}

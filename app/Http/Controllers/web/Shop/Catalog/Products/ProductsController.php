@@ -37,18 +37,25 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $id = 0;
+        $success = false;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $product = Product::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+            ]);
+
+            $id = $product->id;
+            $success = true;
+        } catch (\Exception $e) {
+            logger('Error creando producto, ' . $request->name);
+        }
+
+        return ($success)
+            ? redirect()->back()->with('success', 'Producto creado, ID: ' . $id)
+            : redirect()->back()->with('error', 'Producto NO creado');
     }
 
     /**
@@ -82,6 +89,18 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id = 0;
+        $success = false;
+
+        try {
+            Product::find($id)->delete();
+            $success = true;
+        } catch (\Exception $e) {
+            logger('Error eliminado producto, ID: ' . $id);
+        }
+
+        return ($success)
+            ? redirect()->back()->with('success', 'Producto eliminada, ID: ' . $id)
+            : redirect()->back()->with('error', 'Producto NO eliminado');
     }
 }
